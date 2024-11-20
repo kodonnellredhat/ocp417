@@ -1,0 +1,58 @@
+apiVersion: v1
+baseDomain: kmod.io
+compute:
+- architecture: amd64 
+  hyperthreading: Enabled
+  name: worker
+  replicas: 0
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  replicas: 1
+metadata:
+  name: ocp 
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 192.168.8.0/24
+  networkType: OVNKubernetes 
+  serviceNetwork:
+  - 172.30.0.0/16
+platform: 
+  none: {}
+pullSecret: '{"auths":{"laptop.kmod.io:8443": {"auth": "aW5pdDo2RGtlVHI1NHlXODI3Y0docWc5andFQU1uVTBCM2xpMQ=="}}}' 
+sshKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9LAGxa/nL7S3RKFCa31yLtqx+iZ6SJEihPomz1rK+iR/s7/BNofkvt3/fB66z95X5r0mkqtrcUx21EL/PkfXNe6dBoJmT2hkjG4LyeeHB7pjZSSToWUYJKss1tvWa1znQ1U+hTMLW/ohea29sOrZZX+OT1Gtfth3DKrh01VEosBQXtvxzMqpMy1ufrnlIwZjCKPFBrDrb66leWA37L/pfKDJljky+s2EqSHsnRlYUw8/oYYVrC6qGghtnjzRL1JSZfRwONZlbJwxk3azFVWpfKQYY3x9s0dHB5txjZszeOZZhmTMWWHgHTlPzjxgEliHwSOh1C5nqrqEHkdr8NqhwHURMuOJVbtvdOp8WGDiTqWKsDNqmQxnYfr1LIVPoF6qSz4zdr0r43CIrlttBSB09GJ8lGP+2i8Bzbs9JUJA5Z0oxz7P2uEJKLOUoN7mJ1eKdI3aLH9f/h8qhXEx5k86a1KPps6EKm/JPF761ttB6KV40MkOzSmB+OypvmcevBvk= ko@laptop.kmod.io' 
+imageDigestSources:
+  - mirrors:
+    - laptop.kmod.io:8443/openshift/release
+    source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+  - mirrors:
+    - laptop.kmod.io:8443/openshift/release-images
+    source: quay.io/openshift-release-dev/ocp-release
+additionalTrustBundle: |
+  -----BEGIN CERTIFICATE-----
+  MIID0DCCArigAwIBAgIUXjDmfuGntGhT5lEttrRma7GEKKIwDQYJKoZIhvcNAQEL
+  BQAwaDELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAlZBMREwDwYDVQQHDAhOZXcgWW9y
+  azENMAsGA1UECgwEUXVheTERMA8GA1UECwwIRGl2aXNpb24xFzAVBgNVBAMMDmxh
+  cHRvcC5rbW9kLmlvMB4XDTI0MTExODE5MDUyMloXDTI3MDkwODE5MDUyMlowaDEL
+  MAkGA1UEBhMCVVMxCzAJBgNVBAgMAlZBMREwDwYDVQQHDAhOZXcgWW9yazENMAsG
+  A1UECgwEUXVheTERMA8GA1UECwwIRGl2aXNpb24xFzAVBgNVBAMMDmxhcHRvcC5r
+  bW9kLmlvMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoiCyM6lWLKKE
+  HfH7tCo+wWt18JHdE27AoSjc2UcRoeKFU/XMoIynvktzb63K/uOgxBCAMGakFFF3
+  yJnHEG13e9+oCmYWYUs3vlQYkHkiDZIh+jlkmHZ/uPDuctrKLBVSSKDqsBRIU5hT
+  k6D/Kvna1OGGsL8XhEsgqiv4aBLdksPCybW0gFcLQKdl43ZkSFtvNv1t5ILLkNAh
+  HGjB5iw9+jeSCBDKfhsoFwq3F2pzV9tmGrsxhux3tiMOMkLHe1KFuhJZBVfX5Mjm
+  x7SKGkmC4YYpnvFz5HJ4CiUuc4Jh3lys00tRxLzC9V1diT1QRl2R8RmgZAiZXARK
+  D1qd7KewqwIDAQABo3IwcDALBgNVHQ8EBAMCAuQwEwYDVR0lBAwwCgYIKwYBBQUH
+  AwEwGQYDVR0RBBIwEIIObGFwdG9wLmttb2QuaW8wEgYDVR0TAQH/BAgwBgEB/wIB
+  ATAdBgNVHQ4EFgQU/pdiLXJxMchkGcuaLQm2HHTUuBYwDQYJKoZIhvcNAQELBQAD
+  ggEBACKJ3G84vXpVFf+1i6zbAZtH5CXjFIW02OnMmiDlzZxUPDW0mwyJkr0ZYjkT
+  Q0DzEsFwNz16ccWge8/CBQa9c9+APhwjlttQGKCZZ8AyEuQjCBCPKl9siDHUx9+h
+  0sirPHkgU7VvH1nmmQa4q86VuumL2hsB+bZTzB+idMgEPmn/9OxBSj43M/n924Gu
+  0X9ZvLyuEnW1mEzVp4iwUoulkl+IsKEYhYXhEsK68NvnFHLYd49/T22tSVtf6uR/
+  X5Bqq06Rm5FyJhXL0W+0DrhK2FkWGeGwxSvDKukEpdY1eE6YNmsjq04SXu+jzX94
+  n0v9atZH6JwnkU0XyXQa+FalsQE=
+  -----END CERTIFICATE-----

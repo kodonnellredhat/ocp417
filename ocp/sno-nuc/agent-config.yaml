@@ -1,0 +1,34 @@
+apiVersion: v1beta1
+kind: AgentConfig
+metadata:
+  name: ocp
+rendezvousIP: 192.168.8.199
+hosts: 
+  - hostname: master-0 
+    interfaces:
+      - name: enp86s0
+        macAddress: 48:21:0b:5d:3e:78
+    rootDeviceHints: 
+      deviceName: /dev/nvme0n1
+    networkConfig: 
+      interfaces:
+        - name: enp86s0
+          type: ethernet
+          state: up
+          mac-address: 48:21:0b:5d:3e:78
+          ipv4:
+            enabled: true
+            address:
+              - ip: 192.168.8.199
+                prefix-length: 24
+            dhcp: false
+      dns-resolver:
+        config:
+          server:
+            - 192.168.8.1
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 192.168.8.1
+            next-hop-interface: enp86s0
+            table-id: 254

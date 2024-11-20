@@ -1,0 +1,38 @@
+kind: ImageSetConfiguration
+apiVersion: mirror.openshift.io/v1alpha2
+archiveSize: 4
+storageConfig:
+  local:
+    path: storageconfig
+mirror:
+  platform:
+    channels:
+    - name: stable-4.17
+      type: ocp
+    graph: true
+  operators:
+  - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.17
+    packages:
+    - name: kubevirt-hyperconverged
+    - name: kubernetes-nmstate-operator
+    - name: advanced-cluster-management
+    - name: cincinnati-operator
+    - name: cluster-logging
+    - name: compliance-operator
+    - name: mtv-operator
+    - name: odf-operator
+    - name: rhacs-operator
+    - name: web-terminal
+    - name: quay-operator
+    - name: file-integrity-operator
+    - name: lvms-operator
+    - name: ocs-operator
+    - name: local-storage-operator
+  additionalImages:
+  - name: registry.redhat.io/ubi8/ubi:latest
+  - name: registry.access.redhat.com/ubi9/ubi-minimal:latest
+  - name: registry.access.redhat.com/ubi9/ubi:latest
+  - name: registry.redhat.io/ubi9/httpd-24:latest
+  - name: registry.redhat.io/rhel9/rhel-guest-image:latest
+  - name: registry.redhat.io/rhel8/rhel-guest-image:latest
+
