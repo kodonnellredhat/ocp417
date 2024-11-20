@@ -1,5 +1,29 @@
+echo "# Pull the content mirroring tool oc-mirror"
 curl -L -O https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/oc-mirror.tar.gz 
+
+echo "# Pull the openshift client"
 curl -L -O https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz 
+
+echo "# Pull the openshift install client"
 curl -L -O https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux.tar.gz 
+
+echo "# Pull butane for generating machine configs"
 curl -L -O https://mirror.openshift.com/pub/openshift-v4/clients/butane/latest/butane-amd64
+
+echo "# Pull down the quay mirror registry"
+mkdir mirror-registry
 curl -L -O https://mirror.openshift.com/pub/cgw/mirror-registry/latest/mirror-registry-amd64.tar.gz
+
+echo "# lets put the downloads in place"
+mkdir -p downloads 
+mkdir -p mirror-registry
+mv *.tar.gz downloads/
+mv butane-amd64 downloads/
+tar -xvf downloads/mirror-registry-amd64.tar.gz -C mirror-registry/
+tar -xvf downloads/oc-mirror.tar.gz -C downloads/
+tar -xvf downloads/openshift-client-linux.tar.gz -C downloads/
+tar -xvf downloads/openshift-install-linux.tar.gz -C downloads/
+cp downloads/oc-mirror .
+chmod 744 oc-mirror
+sudo cp downloads/oc /usr/local/bin/oc
+sudo cp downloads/openshift-install /usr/local/bin/openshift-install 
