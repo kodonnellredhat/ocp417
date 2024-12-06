@@ -35,4 +35,9 @@ mirror:
   - name: registry.redhat.io/ubi9/httpd-24:latest
   - name: registry.redhat.io/rhel9/rhel-guest-image:latest
   - name: registry.redhat.io/rhel8/rhel-guest-image:latest
+  - name: registry.redhat.io/rhel10-beta/rhel-guest-image:latest
+  - name: quay.io/containerdisks/fedora:latest
+# - name: quay.io/containerdisks/centos-stream:9
+# - name: quay.io/containerdisks/ubuntu:24.04
+#
 

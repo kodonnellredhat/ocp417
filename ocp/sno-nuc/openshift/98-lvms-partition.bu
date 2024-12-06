@@ -1,0 +1,14 @@
+variant: openshift
+version: 4.17.0
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: master
+  name: 98-lvms-partition
+storage:
+  disks:
+  - device: /dev/disk/by-id/nvme-eui.0025384a31424428
+    partitions:
+    - label: lvms
+      start_mib: 350000 
+      size_mib: 0
+      number: 5
